@@ -1,0 +1,30 @@
+server:
+  port: 9527
+
+spring:
+  application:
+    name: microservicecloud-zuul-gateway
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/
+  instance:
+    instance-id: gateway-9527.com
+    prefer-ip-address: true
+
+
+info:
+  app.name: atguigu-microcloud
+  company.name: www.atguigu.com
+  build.artifactId: ${project.artifactId}
+  build.version: ${project.version}
+
+
+zuul:
+  routes:
+    mydept.serviceId: microservicecloud-dept  #真实地址
+    mydept.path: /mydept/**  #网关地址 配置之后还能真实地址访问！！！
+  ignored-services: "*"  #忽略全部的微服务真实地址
+  prefix: /atguigu #给所有服务加上一个前缀
+# ignored-services: microservicecloud-dept #忽略真实地址让真实地址无法访问
