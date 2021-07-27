@@ -27,9 +27,14 @@ public class ESTest_Doc_BatchInsert {
 
         //批量新增doc
         BulkRequest request = new BulkRequest();
-        request.add(new IndexRequest().index("user-jdx").id("1001").source(JSONObject.toJSONString(new UserJdx("zhangsan", 2, 1)),XContentType.JSON));
-        request.add(new IndexRequest().index("user-jdx").id("1002").source(JSONObject.toJSONString(new UserJdx("lisi",2,1)),XContentType.JSON));
-        request.add(new IndexRequest().index("user-jdx").id("1003").source(JSONObject.toJSONString(new UserJdx("wangwu",2,1)),XContentType.JSON));
+        request.add(new IndexRequest().index("user_jdx").id("1001").source(JSONObject.toJSONString(new UserJdx("zhangsan", 25, 1)),XContentType.JSON));
+        request.add(new IndexRequest().index("user_jdx").id("1002").source(JSONObject.toJSONString(new UserJdx("lisi",30,1)),XContentType.JSON));
+        request.add(new IndexRequest().index("user_jdx").id("1003").source(JSONObject.toJSONString(new UserJdx("wangwu",18,0)),XContentType.JSON));
+        request.add(new IndexRequest().index("user_jdx").id("1004").source(JSONObject.toJSONString(new UserJdx("zhaoliu",50,1)),XContentType.JSON));
+        request.add(new IndexRequest().index("user_jdx").id("1005").source(JSONObject.toJSONString(new UserJdx("liuqi",19,0)),XContentType.JSON));
+        request.add(new IndexRequest().index("user_jdx").id("1006").source(JSONObject.toJSONString(new UserJdx("liuqi2",65,0)),XContentType.JSON));
+        request.add(new IndexRequest().index("user_jdx").id("1007").source(JSONObject.toJSONString(new UserJdx("liuqi232",88,0)),XContentType.JSON));
+        request.add(new IndexRequest().index("user_jdx").id("1008").source(JSONObject.toJSONString(new UserJdx("312liuqi232",88,0)),XContentType.JSON));
         BulkResponse response = esClient.bulk(request, RequestOptions.DEFAULT);
 
         System.out.println(response.getTook());
